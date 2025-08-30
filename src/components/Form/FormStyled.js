@@ -54,6 +54,19 @@ export const Button = styled.button`
   background: linear-gradient(90deg, #ff913d 0%, #7922e3 100%);
 `;
 
+export const Wrap = styled.div`
+  position: relative;
+  width: 800px;
+`;
+
 export const Img = styled.img`
   width: 800px;
+  position: absolute;
+  top: 0;
+  left: 0;
+`;
+
+export const ImgWrap = styled.img`
+  width: 800px;
+  filter: blur(20px);
 `;

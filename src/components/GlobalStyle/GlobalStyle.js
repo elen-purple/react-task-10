@@ -9,7 +9,12 @@ export const GlobalStyle = createGlobalStyle`
   }
   
   *:focus {
-     outline: none;
+    outline: none;
+  }
+
+  *::selection { 
+    background-color: #7922E388;
+    color: #ffffff;
   }
   
   body {

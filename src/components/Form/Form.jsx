@@ -1,6 +1,16 @@
 import { Component } from "react";
 import img from "../../imgs/phone.png";
-import { Div, Img, Title, Forma, Label, Input, Button } from "./FormStyled";
+import {
+  Div,
+  Img,
+  Title,
+  Forma,
+  Label,
+  Input,
+  Button,
+  ImgWrap,
+  Wrap,
+} from "./FormStyled";
 
 export class Form extends Component {
   render() {
@@ -36,7 +46,10 @@ export class Form extends Component {
           </Label>
           <Button type="submit">Add contact</Button>
         </Forma>
-        <Img src={img} alt="img" />
+        <Wrap>
+          <ImgWrap src={img} alt="img" />
+          <Img src={img} alt="img" />
+        </Wrap>
       </Div>
     );
   }
