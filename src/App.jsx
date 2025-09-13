@@ -9,15 +9,37 @@ import { Title } from "./components/ContactsList/ContactsListStyled";
 
 class App extends Component {
   state = {
-    contacts: [
-      { id: "id-1", name: "Rosie Simpson", number: "459-12-56" },
-      { id: "id-2", name: "Hermione Kline", number: "443-89-12" },
-      { id: "id-3", name: "Eden Clements", number: "645-17-79" },
-      { id: "id-4", name: "Annie Copeland", number: "227-91-26" },
-    ],
+    contacts: [],
     filter: "",
     name: "",
     number: "",
+  };
+
+  setItem = (key, value) => {
+    localStorage.setItem(key, JSON.stringify(value));
+  };
+
+  getItem = (key) => {
+    return JSON.parse(localStorage.getItem(key));
+  };
+
+  componentDidMount = () => {
+    console.log(!Object.keys(localStorage).includes("contacts"));
+    if (!Object.keys(localStorage).includes("contacts")) {
+      this.setItem("contacts", []);
+    }
+    this.setState({ contacts: this.getItem("contacts") });
+  };
+
+  componentDidUpdate = () => {
+    console.log("1");
+    if (
+      JSON.stringify(this.state.contacts) !==
+      JSON.stringify(this.getItem("contacts"))
+    ) {
+      console.log("2");
+      this.setItem("contacts", this.state.contacts);
+    }
   };
 
   changeValue = (e) => {
