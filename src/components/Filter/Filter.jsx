@@ -1,18 +1,22 @@
-import { Component } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Input } from "./FilterStyled";
+import { getFilter } from "../../redux/selectors";
+import { filterTasks } from "../../redux/actions";
 
-export class Filter extends Component {
-  render() {
-    return (
-      <label>
-        <Input
-          type="text"
-          name="filter"
-          placeholder="Anna Havrylova"
-          onInput={this.props.changeValue}
-          value={this.props.filter}
-        />
-      </label>
-    );
-  }
-}
+export const Filter = () => {
+  const filter = useSelector(getFilter);
+  const dispatch = useDispatch();
+  return (
+    <label>
+      <Input
+        type="text"
+        name="filter"
+        placeholder="Anna Havrylova"
+        onInput={(e) => {
+          dispatch(filterTasks(e.currentTarget.value));
+        }}
+        value={filter}
+      />
+    </label>
+  );
+};
